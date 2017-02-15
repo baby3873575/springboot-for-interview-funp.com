@@ -88,11 +88,11 @@ public class ScheduledTasks {
 		
 		
 		
-		log.info("Customers found with findAll():");
-		log.info("-------------------------------");
-		for (Ad ad : repository.findAll()) {
-			log.info(ad.toString());
-		}
+//		log.info("Customers found with findAll():");
+//		log.info("-------------------------------");
+//		for (Ad ad : repository.findAll()) {
+//			log.info(ad.toString());
+//		}
 
     }
     

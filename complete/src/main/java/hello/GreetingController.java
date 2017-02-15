@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -42,15 +43,18 @@ public class GreetingController {
 
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
-    
+    private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
     @Autowired
     private AdRepository repository;
 
     @RequestMapping("/greeting")
-    public Ad greeting(@RequestParam(value="name", defaultValue="World") String name) {
+    public List<Ad> greeting(@RequestParam(value="name", defaultValue="World") String name) {
     	
     	
-    	return repository.findByTitle(String.format(template, name)).get(0);
-       
+    	List<Ad> ad = repository.findByTitleLike(String.format(template, name));
+    	return ad;
+   
+    	
+    
     }
 }
