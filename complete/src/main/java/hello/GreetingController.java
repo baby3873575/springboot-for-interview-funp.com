@@ -1,7 +1,7 @@
 package hello;
 
 import java.util.concurrent.atomic.AtomicLong;
-
+import java.util.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +25,7 @@ import org.json.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import com.google.common.collect.Lists;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,11 +51,16 @@ public class GreetingController {
     @RequestMapping("/greeting")
     public List<Ad> greeting(@RequestParam(value="name", defaultValue="World") String name) {
     	
-    	
-    	List<Ad> ad = repository.findByTitleLike(String.format(template, name));
-    	return ad;
-   
-    	
+    	Iterable<Ad> iterator = repository.findAll();
+    	List<Ad> list = Lists.newArrayList(iterator);
+    	return list;
+    }
     
+    @RequestMapping("/getAds")
+    public List<Ad> getads(@RequestParam(value="name", defaultValue="") String name) {
+    	
+    	Iterable<Ad> iterator = repository.findByTitleContainingIgnoreCase(name);
+    	List<Ad> list = Lists.newArrayList(iterator);
+    	return list;
     }
 }

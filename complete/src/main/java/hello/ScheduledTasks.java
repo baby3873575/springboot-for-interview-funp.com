@@ -81,66 +81,12 @@ public class ScheduledTasks {
 				description= ass.getJSONObject("data").getString("value");
 			}
 		}	
-		
-		
-		
-		repository.save(new Ad(title,description,click_ur,ilsArr));
-		
-		
-		
-//		log.info("Customers found with findAll():");
-//		log.info("-------------------------------");
-//		for (Ad ad : repository.findAll()) {
-//			log.info(ad.toString());
-//		}
+
+		if(repository.findByTitle(title).size()==0 ){
+			repository.save(new Ad(title,description,click_ur,ilsArr));
+		}	
 
     }
-    
-    
-//    
-//    @Entity(name = "asset") 
-//    class Asset{
-//    	
-//    }
-    
-    
-    
-//    
-//    @Entity(name = "CUSTOMER") 
-//    class Customer {
-//    	
-//           @Id //signifies the primary key  
-//           @Column(name = "CUST_ID", nullable = false)
-//           @GeneratedValue(strategy = GenerationType.AUTO)
-//           private long custId;
-//           
-//           @Column(name = "FIRST_NAME", length = 50)
-//           private String firstName;
-//           
-//           @Column(name = "LAST_NAME", nullable = false,length = 50)
-//           private String lastName;
-//           
-//           @Column(name = "STREET")
-//           private String street;
-//           @OneToMany(mappedBy="customer",targetEntity=Order.class,fetch=FetchType.EAGER)
-//           private Collection orders;       
-//
-//           // The other attributes and getters and setters goes here
-//    }
-//    
-//    @Entity(name = "ORDERS") 
-//    class Order {
-//           
-//           @Id //signifies the primary key
-//           @Column(name = "ORDER_ID", nullable = false)
-//           @GeneratedValue(strategy = GenerationType.AUTO)
-//           private long orderId;
-//           
-//    
-//         
-//          
-//    }
-
 
     
 }

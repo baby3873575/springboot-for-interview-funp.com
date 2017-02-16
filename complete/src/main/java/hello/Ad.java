@@ -19,14 +19,14 @@ public class Ad {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@Column( length = 100000 )
-	private String title;
+	@Column( length = 100000,unique=true )	
+	public String title;
 	
 	@Column( length = 100000 )
-	private String description;
+	public String description;
 	
 	@Column( length = 100000 )
-	private String click_url;
+	public String click_url;
 	
 	@Column( length = 100000 )
 	public String [] impression_links;

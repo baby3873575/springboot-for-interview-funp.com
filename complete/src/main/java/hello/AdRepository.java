@@ -8,4 +8,5 @@ public interface AdRepository extends CrudRepository<Ad, Long> {
 
     List<Ad> findByTitle(String Title);
     List<Ad> findByTitleLike(String Title);
+    List<Ad> findByTitleContainingIgnoreCase(String Title);
 }
